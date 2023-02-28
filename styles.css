@@ -1,0 +1,329 @@
+html {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: none;
+  overflow-x: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  background-image: url(./IMG/shutterstock_1704790186.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.entry {
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -70px;
+  margin-top: -50px;
+  padding: 20px;
+  border-radius: 150px;
+  cursor: pointer;
+  background: none;
+  border: 2px solid white;
+  color: white;
+}
+
+.entry--hide {
+  display: none;
+}
+
+.main--container {
+  height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.show--main {
+  opacity: 1;
+  transition: opacity 5s ease;
+  pointer-events: all;
+}
+
+.nav--container {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  /* border: 2px dashed white; */
+  margin-bottom: 100px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+}
+
+.nav--dot {
+  height: 20px;
+  width: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  background-repeat: no-repeat;
+  z-index: 1;
+  /* box-shadow: 0px 0px 7px -1px white; */
+}
+
+.active--dot {
+  background-color: white;
+  transition: 0.5s ease;
+}
+
+.dot--color {
+  background-color: white;
+}
+
+.line {
+  position: absolute;
+  width: 0%;
+  background-color: white;
+  height: 1px;
+  z-index: -1;
+  transition: 0.5s ease;
+}
+
+.nav--dot:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+/* Planet specs */
+#mercury {
+  height: 15px;
+  width: 15px;
+}
+
+#venus {
+  height: 25px;
+  width: 25px;
+}
+
+#earth {
+  height: 25px;
+  width: 25px;
+}
+
+#jupiter {
+  height: 50px;
+  width: 50px;
+}
+
+#saturn {
+  height: 45px;
+  width: 45px;
+}
+
+#uranus {
+  height: 35px;
+  width: 35px;
+}
+
+#neptune {
+  height: 35px;
+  width: 35px;
+}
+
+#pluto {
+  height: 15px;
+  width: 15px;
+}
+
+/* Planet Specs end */
+
+.planet--container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  width: 100%;
+  top: 15%;
+  opacity: 0;
+  transition: opacity 2s ease;
+  display: none;
+  z-index: -1;
+}
+
+.active--planet {
+  display: block;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+.planet--info {
+  font-size: medium;
+  color: white;
+  position: absolute;
+  width: 15%;
+  right: 0;
+  top: 40%;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  transition: all 2s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.planet--specs {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  top: 28%;
+  transition: all 2s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spec {
+  height: 100px;
+  width: 150px;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.text--shift {
+  opacity: 1;
+  transform: translateX(60%);
+  transition: transform 2s ease;
+}
+
+.spec--shift {
+  opacity: 1;
+  transform: translateX(-20%);
+  transition: all 2s ease;
+}
+
+.name {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 2s ease;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease;
+}
+
+.icon--left {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  right: 0;
+  top: 0;
+  left: -50%;
+  bottom: 0;
+  margin: auto;
+  width: 25px;
+  height: 25px;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.icon--dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  transition: 0.2s ease;
+}
+
+.dot--size {
+  width: 15px;
+  height: 15px;
+  transition: 0.2s ease;
+}
+
+.icon--right {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  right: -50%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.icon--hide {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  pointer-events: none;
+}
+
+.icon--text {
+  font-family: "Open Sans", sans-serif;
+  transition: 0.2s ease;
+}
+
+.text--bold {
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.planet {
+  width: 40%;
+  transition: transform 2.5s ease-out;
+  z-index: 1;
+}
+
+.shift--left {
+  transform: translateX(-40%);
+  transition: transform 2.5s ease-out;
+}
+
+.shift--right {
+  transform: translateX(40%);
+  transition: transform 2.5s ease-out;
+}
+
+.show {
+  position: relative;
+  transform: translateX(0);
+  transition: transform 7s ease-out;
+}
