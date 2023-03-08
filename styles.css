@@ -1,23 +1,24 @@
 html {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  overflow-y: none;
-  overflow-x: none;
+  overflow: hidden;
   margin: 0;
   padding: 0;
 }
 
 body {
+  height: 100%;
   background-color: black;
   margin: 0;
   padding: 0;
   position: relative;
+  overflow: hidden;
 }
 
 body::before {
   content: "";
-  background-image: url(./IMG/shutterstock_1704790186.jpg);
-  background-size: cover;
+  background-image: url(./IMG/BG.jpg);
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   display: block;
@@ -26,7 +27,7 @@ body::before {
   top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.3;
+  opacity: 0.6;
   z-index: -1;
 }
 
@@ -89,6 +90,7 @@ body::before {
   transition: all 0.2s ease;
   background-repeat: no-repeat;
   z-index: 1;
+  cursor: pointer;
   /* box-shadow: 0px 0px 7px -1px white; */
 }
 
@@ -107,7 +109,7 @@ body::before {
   background-color: white;
   height: 1px;
   z-index: -1;
-  transition: 0.5s ease;
+  transition: 1s ease;
 }
 
 .nav--dot:hover {
@@ -158,14 +160,13 @@ body::before {
 /* Planet Specs end */
 
 .planet--container {
-  position: absolute;
+  position: relative;
   display: flex;
-  justify-content: center;
   margin-bottom: 40px;
   width: 100%;
   top: 15%;
   opacity: 0;
-  transition: opacity 2s ease;
+  transition: all 2s ease;
   display: none;
   z-index: -1;
 }
@@ -175,7 +176,7 @@ body::before {
   display: flex;
   justify-content: center;
   opacity: 1;
-  transition: opacity 2s ease;
+  transition: all 2s ease;
 }
 
 .planet--info {
@@ -183,43 +184,76 @@ body::before {
   color: white;
   position: absolute;
   width: 15%;
-  right: 0;
-  top: 40%;
-  left: 0;
-  bottom: 0;
-  margin: auto;
   transition: all 2s ease;
   opacity: 0;
   pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+p {
+  margin: 0;
 }
 
 .planet--specs {
   position: absolute;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  top: 28%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
   transition: all 2s ease;
   opacity: 0;
   pointer-events: none;
 }
 
 .spec {
-  height: 100px;
-  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-direction: column;
+  padding: 10px;
+  height: 13vh;
+  width: 8vw;
   border: 1px solid white;
-  border-radius: 20px;
-  margin: 10px;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  background-image: linear-gradient(to left, white 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: left center;
+  transition: background-position 0.5s ease;
+}
+
+.spec:hover {
+  background-position: right center;
+  transition: background-position 0.5s ease;
+}
+
+.picto {
+  width: 40%;
+}
+
+.dia--pic {
+  width: 30%;
+}
+
+.temp--pic {
+  width: 30%;
 }
 
 .text--shift {
   opacity: 1;
-  transform: translateX(60%);
+  transform: translateX(25%) translateY(-50%);
   transition: transform 2s ease;
 }
 
 .spec--shift {
   opacity: 1;
-  transform: translateX(-20%);
+  transform: translateX(-105%) translateY(-50%);
   transition: all 2s ease;
 }
 
@@ -262,12 +296,8 @@ body::before {
   border-radius: 50%;
   background-color: white;
   transition: 0.2s ease;
-}
-
-.dot--size {
-  width: 15px;
-  height: 15px;
-  transition: 0.2s ease;
+  position: absolute;
+  transition: all 1s ease;
 }
 
 .icon--right {
@@ -288,22 +318,26 @@ body::before {
   padding: 5px;
   cursor: pointer;
   z-index: 1;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    white 50%,
+    transparent 50%
+  );
+  background-size: 200% 100%;
+  background-position: left center;
+  transition: background-position 1s ease;
+}
+
+.icon--fill {
+  background-position: right center;
+  transition: background-position 1s ease;
+  color: black;
 }
 
 .icon--hide {
   opacity: 0;
   transition: opacity 1.5s ease;
   pointer-events: none;
-}
-
-.icon--text {
-  font-family: "Open Sans", sans-serif;
-  transition: 0.2s ease;
-}
-
-.text--bold {
-  font-weight: 600;
-  transition: 0.2s ease;
 }
 
 .planet {
@@ -326,4 +360,33 @@ body::before {
   position: relative;
   transform: translateX(0);
   transition: transform 7s ease-out;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  border: 2px dashed #f00;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.orbiting {
+  animation-name: orbit;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(35px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(35px) rotate(-360deg);
+  }
 }
